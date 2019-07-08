@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku 
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,12 +74,11 @@ WSGI_APPLICATION = 'raoul.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(
+    default=
+    "postgres://cqnnpvvisvslvx:1282e21cab32c696fdc2da9b5cf722daab5d4aeac6fc3678154e4820e677a70c@ec2-50-19-222-129.compute-1.amazonaws.com:5432/d6ss9tg69ukt60",
+    conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -122,5 +121,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {'NON_FIELD_ERRORS_KEY': 'detail'}
-
-django_heroku.settings(locals())
