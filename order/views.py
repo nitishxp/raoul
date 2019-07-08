@@ -22,7 +22,7 @@ from order.serializers import (
 class WorkOrderCreateView(ListCreateAPIView):
     """
     get:
-    Return list of all orders within deadline
+    Return list of all orders
 
     post:
     Create a new work order
