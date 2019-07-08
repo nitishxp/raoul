@@ -1,52 +1,16 @@
 import coreapi
-
-from django.http import Http404
-from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework.schemas import AutoSchema
-from rest_framework.generics import (
-    CreateAPIView,
-    ListAPIView,
-    ListCreateAPIView,
-    GenericAPIView,
-)
 from rest_framework import status
 from rest_framework.views import APIView
-from django.db.models import Count
-from raoul.models import (Worker, WorkOrder, WorkerOrderAssignment)
-from order.serializers import (
-    WorkerCreateSerializer,
-    WorkOrderCreateSerializer,
+from raoul.models import (WorkerOrderAssignment)
+from assignment.serializers import (
     AssignOrderToWorkerSerializer,
     WorkOrderInfoSerializer,
 )
 
 
-class WorkerCreateView(ListCreateAPIView):
-    """
-    get:
-    Return list of workers
-
-    post:
-    Create a new worker
-    """
-    queryset = Worker.objects.all()
-    serializer_class = WorkerCreateSerializer
-
-
-class WorkOrderCreateView(ListCreateAPIView):
-    """
-    get:
-    Return list of all orders within deadline
-
-    post:
-    Create a new work order
-    """
-    queryset = WorkOrder.objects.all()
-    serializer_class = WorkOrderCreateSerializer
-
-
-class AssignOrdereToWorker(APIView):
+class AssignOrdereToWorkerView(APIView):
     """
     post:
     Assign a order to worker
@@ -64,23 +28,6 @@ class AssignOrdereToWorker(APIView):
             return Response(serializer.errors, status=400)
 
         return Response({'detail': "Success"})
-
-
-class DeleteWorkerView(APIView):
-    """
-    delete:
-    Delete a worker
-    """
-    schema = AutoSchema([
-        coreapi.Field("worker_id",
-                      required=True,
-                      location='path',
-                      description='Enter Worker Id')
-    ])
-
-    def delete(self, request, worker_id):
-        Worker.objects.filter(pk=worker_id).delete()
-        return Response({'detail': "Deleted Successfully"})
 
 
 class FetchWorkOrdersView(APIView):
