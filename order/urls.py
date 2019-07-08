@@ -5,7 +5,7 @@ from order.views import (
 )
 
 urlpatterns = [
-    path('order', WorkOrderCreateView.as_view(), name="order"),
+    path('', WorkOrderCreateView.as_view(), name="order"),
     #     path('assign_order_to_worker',
     #          AssignOrdereToWorker.as_view(),
     #          name="w_assign_order"),
