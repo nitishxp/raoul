@@ -3,4 +3,4 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 def index(request):
 
-    return HttpResponse("Doc location")
+    return HttpResponseRedirect("/docs")
