@@ -13,8 +13,8 @@ from rest_framework.generics import (
 from rest_framework import status
 from rest_framework.views import APIView
 from django.db.models import Count
-from api.models import (Worker, WorkOrder, WorkerOrderAssignment)
-from api.serializers import (
+from raoul.models import (Worker, WorkOrder, WorkerOrderAssignment)
+from order.serializers import (
     WorkerCreateSerializer,
     WorkOrderCreateSerializer,
     AssignOrderToWorkerSerializer,

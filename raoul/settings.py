@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api',
+    'raoul',
+    'worker',
+    'order',
+    'assignment',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +124,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-WHITENOISE_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'root') 
+WHITENOISE_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'root')
 
 REST_FRAMEWORK = {'NON_FIELD_ERRORS_KEY': 'detail'}

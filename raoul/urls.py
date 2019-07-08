@@ -20,7 +20,8 @@ from raoul.views import index
 
 urlpatterns = [
     path('', index),
-    path('api/', include('api.urls')),
-    # path('docs/', get_swagger_view(title='API'), name='swagger-api-docs'),
+    path('order/', include('order.urls')),
+    path('worker/', include('worker.urls')),
+    path('worker-order/', include('assignment.urls')),
     path('docs/', include_docs_urls(title="API Documentation")),
 ]

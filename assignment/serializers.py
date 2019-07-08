@@ -8,7 +8,7 @@ from rest_framework.serializers import (
     DateField,
     Serializer,
 )
-from api.models import (
+from raoul.models import (
     Worker,
     WorkOrder,
     WorkerOrderAssignment,
