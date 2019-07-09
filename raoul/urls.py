@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from raoul.views import index
+from raoul.render import CustomRenderer
 
 urlpatterns = [
     path('', index),
     path('order/', include('order.urls')),
     path('worker/', include('worker.urls')),
     path('worker-order/', include('assignment.urls')),
-    path('docs/', include_docs_urls(title="API Documentation")),
+    path(
+        'docs/',
+        include_docs_urls(title="API Documentation",
+                          description="",
+                          renderer_classes=[CustomRenderer])),
 ]
